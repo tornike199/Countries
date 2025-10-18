@@ -2,17 +2,15 @@ import { useState } from "react";
 import { useAppContext } from "../context/AppContext";
 
 const Filter = () => {
-  const { darkMode } = useAppContext();
+  const { darkMode, selectedRegion, setSelectedRegion } = useAppContext();
 
-  const regions: string[] = ["Africa", "America", "Asia", "Europe", "Oceania"];
-
+  const regions: string[] = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
 
   const handleRegionClick = (region: string) => {
-    setSelectedRegion(region);
+    // If "All" is selected, reset the region filter
+    setSelectedRegion(region === "All" ? "" : region);
     setIsOpen(false);
-    console.log("Selected region:", region);
   };
 
   const toggleDropdown = () => {
@@ -33,17 +31,18 @@ const Filter = () => {
           </div>
         </div>
 
-        <div
-          className={`absolute flex flex-col gap-2 w-full left-0 py-4 px-6 transition-all duration-300 shadow-md rounded-[5px]
-          ${isOpen ? "block bottom-[-190px]" : "hidden"}
-          ${darkMode ? "bg-[#2B3844] text-white" : "bg-white text-[#111517]"}`}
-        >
-          {regions.map((region) => (
-            <h2 key={region} onClick={() => handleRegionClick(region)} className="cursor-pointer hover:font-semibold">
-              {region}
-            </h2>
-          ))}
-        </div>
+        {isOpen && (
+          <div
+            className={`absolute flex flex-col gap-2 w-full left-0 top-[70px]  py-4  px-6 transition-all duration-300 shadow-md rounded-[5px]
+            ${darkMode ? "bg-[#2B3844] text-white" : "bg-white text-[#111517]"}`}
+          >
+            {regions.map((region) => (
+              <h2 key={region} onClick={() => handleRegionClick(region)} className="cursor-pointer hover:font-semibold">
+                {region}
+              </h2>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

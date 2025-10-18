@@ -35,7 +35,7 @@ export interface Country {
   translations: {
     [key: string]: string;
   };
-  flag: string; // alternative to flags.svg
+  flag: string;
   regionalBlocs: {
     acronym: string;
     name: string;

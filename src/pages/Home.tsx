@@ -7,7 +7,7 @@ import { useAppContext } from "../context/AppContext";
 import type { Country } from "../types";
 
 const Home = () => {
-  const { darkMode } = useAppContext();
+  const { darkMode, searchTerm, selectedRegion } = useAppContext();
   const [data, setData] = useState<Country[]>([]);
 
   const fetchData = async () => {
@@ -23,6 +23,12 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const filteredData = data.filter((country) => {
+    const matchesSearch = country.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesRegion = selectedRegion ? country.region === selectedRegion : true;
+    return matchesSearch && matchesRegion;
+  });
+
   return (
     <div>
       <main className={`px-7 py-12 lg:px-20 transition-colors duration-300  ${darkMode ? "bg-[#202C36]" : "bg-[#FAFAFA]"}`}>
@@ -32,9 +38,11 @@ const Home = () => {
         </div>
         <div className="flex justify-center">
           <div className="grid grid-cols-1 justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-20">
-            {data.map((country) => (
-              <Card key={country.id} country={country} />
-            ))}
+            {filteredData.length > 0 ? (
+              filteredData.map((country) => <Card key={country.id} country={country} />)
+            ) : (
+              <p className="col-span-full text-center text-lg font-medium">No countries found.</p>
+            )}
           </div>
         </div>
       </main>

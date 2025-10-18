@@ -1,7 +1,7 @@
 import { useAppContext } from "../context/AppContext";
 
 const Search = () => {
-  const { darkMode } = useAppContext();
+  const { darkMode, searchTerm, setSearchTerm } = useAppContext();
 
   return (
     <div>
@@ -9,6 +9,8 @@ const Search = () => {
         <img src={`${darkMode ? "/public/searchForBlack.svg" : "/public/searchForWhite.svg"}`} alt="search icon" />
         <input
           type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search for a country…"
           className={`focus:outline-none w-full transition-colors duration-300 ${darkMode ? "text-white placeholder:text-white" : "text-[#848484] placeholder:text-[#848484]"}`}
         />
