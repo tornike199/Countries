@@ -1,9 +1,17 @@
+import { useAppContext } from "../context/AppContext";
+
 const Search = () => {
+  const { darkMode } = useAppContext();
+
   return (
     <div>
-      <div className="flex gap-6 w-[343px] lg:w-[480px]  ps-8 py-4 bg-[#fff] shadow-md rounded-[5px]">
-        <img src="/searchWhite.svg" alt="" />
-        <input type="text" placeholder="Search for a country…" className="focus:outline-none text-[#848484] w-full" />
+      <div className={`flex gap-6 w-[343px] lg:w-[480px] ps-8 py-4 transition-colors duration-300 ${darkMode ? "bg-[#2B3844]" : "bg-[#fff]"} shadow-md rounded-[5px]`}>
+        <img src={`${darkMode ? "/public/searchForBlack.svg" : "/public/searchForWhite.svg"}`} alt="search icon" />
+        <input
+          type="text"
+          placeholder="Search for a country…"
+          className={`focus:outline-none w-full transition-colors duration-300 ${darkMode ? "text-white placeholder:text-white" : "text-[#848484] placeholder:text-[#848484]"}`}
+        />
       </div>
     </div>
   );
