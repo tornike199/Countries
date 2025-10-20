@@ -12,7 +12,7 @@ const Card: React.FC<CardProp> = ({ country }) => {
   return (
     <div>
       <Link to={`/country/${country.id}`}>
-        <div className={`w-[264px]  duration-300 transition-all cursor-pointer hover:mt-[-10px] ${darkMode ? "bg-[#2B3844] text-[#fff]" : "bg-[#fff] text-[#111517]"}  shadow-md rounded-[5px]`}>
+        <div className={`w-[264px]  duration-300 transition-all cursor-pointer hover:mt-[-10px] ${darkMode ? "bg-[#2B3844] text-[#fff]" : "bg-[#fff] text-[#111517]"}  shadow-lg rounded-[5px]`}>
           <img className="mb-[24px] h-[200px]" src={country.flags?.png} alt="flag" />
           <div className="p-[24px]">
             <h2 className="mb-[16px] font-extrabold ">{country.name}</h2>

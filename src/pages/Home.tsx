@@ -5,6 +5,7 @@ import Filter from "../components/Filter";
 import Search from "../components/Search";
 import { useAppContext } from "../context/AppContext";
 import type { Country } from "../types";
+import Pagination from "../components/Pagination";
 
 const Home = () => {
   const { darkMode, searchTerm, selectedRegion } = useAppContext();
@@ -37,13 +38,7 @@ const Home = () => {
           <Filter />
         </div>
         <div className="flex justify-center">
-          <div className="grid grid-cols-1 justify-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-20">
-            {filteredData.length > 0 ? (
-              filteredData.map((country) => <Card key={country.id} country={country} />)
-            ) : (
-              <p className="col-span-full text-center text-lg font-medium">No countries found.</p>
-            )}
-          </div>
+          <Pagination items={filteredData} itemsPerPage={12} renderItem={(country) => <Card key={country.id} country={country} />} />
         </div>
       </main>
     </div>

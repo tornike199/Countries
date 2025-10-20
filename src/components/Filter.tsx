@@ -8,7 +8,6 @@ const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleRegionClick = (region: string) => {
-    // If "All" is selected, reset the region filter
     setSelectedRegion(region === "All" ? "" : region);
     setIsOpen(false);
   };
@@ -21,7 +20,7 @@ const Filter = () => {
     <div>
       <div
         onClick={toggleDropdown}
-        className={`py-4 px-6 w-[200px] relative shadow-md rounded-[5px] cursor-pointer transition-colors duration-300
+        className={`py-4 px-6 w-[200px] relative shadow-lg rounded-[5px] cursor-pointer transition-colors duration-300
         ${darkMode ? "bg-[#2B3844] text-white" : "bg-white text-[#111517]"}`}
       >
         <div className="flex items-center justify-between">
@@ -33,7 +32,7 @@ const Filter = () => {
 
         {isOpen && (
           <div
-            className={`absolute flex flex-col gap-2 w-full left-0 top-[70px]  py-4  px-6 transition-all duration-300 shadow-md rounded-[5px]
+            className={`absolute flex flex-col gap-2 w-full left-0 top-[70px]  py-4  px-6 transition-all duration-300 shadow-lg rounded-[5px]
             ${darkMode ? "bg-[#2B3844] text-white" : "bg-white text-[#111517]"}`}
           >
             {regions.map((region) => (
