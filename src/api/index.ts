@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Country } from "../types";
+import type { Country } from "../types/types";
 
 const BASE_URL = "http://localhost:8000";
 

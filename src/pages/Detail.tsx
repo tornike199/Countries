@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import type { Country } from "../types";
+import type { Country } from "../types/types";
 import { useAppContext } from "../context/AppContext";
 
 const Detail = () => {
@@ -22,24 +22,33 @@ const Detail = () => {
     if (id) fetchCountry();
   }, [id]);
 
-  if (!country) return <p className="text-center mt-20 text-lg">Loading...</p>;
+  if (!country) return <p className={`text-center mt-20 text-lg ${darkMode ? "text-white" : "text-[#111517]"}`}>Loading...</p>;
 
   return (
-    <div className={`${darkMode ? "bg-[#202C36] text-white" : "bg-[#FFFFFF] text-[#111517]"} min-h-screen transition-colors duration-300`}>
-      <div className="px-7 lg:px-20 py-10 ">
+    <div className={`min-h-screen transition-colors duration-500 ${darkMode ? "bg-[#202C36] text-white" : "bg-[#FFFFFF] text-[#111517]"}`}>
+      <div className="px-7 lg:px-20 py-10">
         <Link
           to="/"
-          className={`flex items-center gap-3 px-6 py-2 rounded shadow-md w-fit mb-14 
-          ${darkMode ? "bg-[#2B3844] text-white" : "bg-white text-[#111517]"}`}
+          className={`flex items-center gap-3 px-6 py-2 rounded shadow-md w-fit mb-14 transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+            darkMode ? "bg-[#2B3844] text-white hover:bg-[#364654]" : "bg-white text-[#111517] hover:bg-gray-50"
+          }`}
         >
           <img src={darkMode ? "/public/arrowBackWhite.svg" : "/public/arrowBackBlack.svg"} alt="arrow" className="w-4 h-4" />
           Back
         </Link>
 
         <div className="flex flex-col lg:flex-row gap-20 items-center">
-          <img src={country.flags?.svg} alt={country.name} className="w-full max-w-[560px] rounded-lg shadow-md" />
+          <div className="relative w-full max-w-[560px]">
+            <img
+              src={country.flags?.svg}
+              alt={`${country.name} flag`}
+              className="w-full rounded-lg shadow-lg object-cover transform transition-transform duration-700 ease-in-out hover:scale-105 hover:rotate-1"
+            />
 
-          <div className="w-full max-w-[600px] mb-[20px]">
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-tr from-transparent via-transparent to-white/10 opacity-0 hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+          </div>
+
+          <div className="w-full max-w-[600px] mb-[20px] animate-fadeIn">
             <h1 className="text-2xl lg:text-3xl font-extrabold mb-8">{country.name}</h1>
 
             <div className="flex flex-col lg:flex-row justify-between gap-10 mb-10">
@@ -80,8 +89,9 @@ const Detail = () => {
                 country.borders.map((borderCode) => (
                   <span
                     key={borderCode}
-                    className={`px-6 py-1 rounded shadow text-sm 
-                    ${darkMode ? "bg-[#2B3844] text-white" : "bg-white text-[#111517]"}`}
+                    className={`px-6 py-1 rounded shadow text-sm transition-all duration-300 hover:scale-105 hover:shadow-md ${
+                      darkMode ? "bg-[#2B3844] text-white hover:bg-[#364654]" : "bg-white text-[#111517] hover:bg-gray-100"
+                    }`}
                   >
                     {borderCode}
                   </span>
