@@ -33,7 +33,7 @@ const Header = () => {
           </div>
 
           <button onClick={toggleDarkMode} className="font-nunito text-sm lg:text-base font-semibold leading-normal flex items-center gap-2 cursor-pointer">
-            {darkMode ? <img src="/public/moonDark.svg" alt="moon" /> : <img src="/public/moon.svg" alt="moon" />}
+            {darkMode ? <img src="/moonDark.svg" alt="moon" /> : <img src="/moon.svg" alt="moon" />}
             Dark Mode
           </button>
         </div>

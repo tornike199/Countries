@@ -26,7 +26,7 @@ const Filter = () => {
         <div className="flex items-center justify-between">
           <h2>{selectedRegion || "Filter by Region"}</h2>
           <div>
-            <img src={`${darkMode ? "/public/arrowWhite.svg" : "/public/arrowBlack.svg"}`} alt="arrow" className={`transition-transform duration-300 ${isOpen ? "rotate-0" : "rotate-180"}`} />
+            <img src={`${darkMode ? "/arrowWhite.svg" : "/arrowBlack.svg"}`} alt="arrow" className={`transition-transform duration-300 ${isOpen ? "rotate-0" : "rotate-180"}`} />
           </div>
         </div>
 
