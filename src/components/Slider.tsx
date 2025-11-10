@@ -32,8 +32,8 @@ const Slider = ({ data }: SliderProps) => {
       >
         {data.map((country, index) => (
           <SwiperSlide key={index} className="!flex !flex-col !items-center !justify-center text-center">
-            <img src={country.flags.svg} alt={country.name || country.name} className="w-24 h-16 object-cover shadow-md rounded-md mb-2 transition-transform duration-300 hover:scale-105" />
-            <p className={`text-sm font-semibold truncate w-24 ${darkMode ? "text-gray-200" : "text-gray-700"}`}>{country.name || country.name}</p>
+            <img src={country.flags?.svg} alt={country.name?.common} className="w-24 h-16 object-cover shadow-md rounded-md mb-2 transition-transform duration-300 hover:scale-105" />
+            <p className={`text-sm font-semibold truncate w-24 ${darkMode ? "text-gray-200" : "text-gray-700"}`}>{country.name?.common}</p>
           </SwiperSlide>
         ))}
       </Swiper>

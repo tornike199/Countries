@@ -1,46 +1,20 @@
 export interface Country {
-  id: string;
-  name: string;
-  population: number;
-  region: string;
-  subregion: string;
-  capital: string;
+  cca3: string;
+  name: {
+    common: string;
+    official: string;
+    nativeName?: Record<string, { official: string; common: string }>;
+  };
   flags: {
-    png: string;
-    svg: string;
+    png?: string;
+    svg?: string;
   };
-  topLevelDomain: string[];
-  alpha2Code: string;
-  alpha3Code: string;
-  callingCodes: string[];
-  altSpellings: string[];
-  latlng: [number, number];
-  demonym: string;
-  area: number;
-  timezones: string[];
-  borders: string[];
-  nativeName: string;
-  numericCode: string;
-  currencies: {
-    code: string;
-    name: string;
-    symbol: string;
-  }[];
-  languages: {
-    iso639_1: string;
-    iso639_2: string;
-    name: string;
-    nativeName: string;
-  }[];
-  translations: {
-    [key: string]: string;
-  };
-  flag: string;
-  regionalBlocs: {
-    acronym: string;
-    name: string;
-  }[];
-  cioc: string;
-  independent: boolean;
+  capital?: string[];
+  region: string;
+  subregion?: string;
+  population: number;
+  tld?: string[];
+  currencies?: Record<string, { name: string; symbol: string }>;
+  languages?: Record<string, string>;
+  borders?: string[];
 }
-

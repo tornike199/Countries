@@ -26,29 +26,25 @@ const Home = () => {
   }, []);
 
   const filteredData = data.filter((country) => {
-    const matchesSearch = country.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = country.name.common.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesRegion = selectedRegion ? country.region === selectedRegion : true;
     return matchesSearch && matchesRegion;
   });
 
   return (
     <div>
-      <main className={`px-7 py-12 lg:px-20 transition-colors duration-300  ${darkMode ? "bg-[#202C36]" : "bg-[#FAFAFA]"}`}>
+      <main className={`px-7 py-12 lg:px-20 transition-colors duration-300 ${darkMode ? "bg-[#202C36]" : "bg-[#FAFAFA]"}`}>
         <div className="slider flex justify-center mb-10">
-          <Slider data={data}></Slider>
+          <Slider data={data} />
         </div>
+
         <div className="flex justify-between flex-col gap-5 lg:flex-row mb-12">
           <Search />
           <Filter />
         </div>
 
-        <div className="flex justify-center ">
-          <Pagination
-            key={`${searchTerm}-${selectedRegion}`} // 🔥 resets pagination when filters change
-            items={filteredData}
-            itemsPerPage={12}
-            renderItem={(country) => <Card key={country.id} country={country} />}
-          />
+        <div className="flex justify-center">
+          <Pagination key={`${searchTerm}-${selectedRegion}`} items={filteredData} itemsPerPage={12} renderItem={(country) => <Card key={country.cca3} country={country} />} />
         </div>
       </main>
     </div>

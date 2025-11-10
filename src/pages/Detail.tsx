@@ -12,17 +12,26 @@ const Detail = () => {
   useEffect(() => {
     const fetchCountry = async () => {
       try {
-        const response = await axios.get<Country>(`http://localhost:8000/countries/${id}`);
-        setCountry(response.data);
+        if (!id) return;
+        const response = await axios.get<Country[]>(`https://restcountries.com/v3.1/alpha/${id}`);
+        setCountry(response.data[0]);
       } catch (error) {
         console.error("Failed to fetch country:", error);
       }
     };
 
-    if (id) fetchCountry();
+    fetchCountry();
   }, [id]);
 
   if (!country) return <p className={`text-center mt-20 text-lg ${darkMode ? "text-white" : "text-[#111517]"}`}>Loading...</p>;
+
+  const currencies = country.currencies
+    ? Object.values(country.currencies)
+        .map((c) => c.name)
+        .join(", ")
+    : "N/A";
+
+  const languages = country.languages ? Object.values(country.languages).join(", ") : "N/A";
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${darkMode ? "bg-[#202C36] text-white" : "bg-[#FFFFFF] text-[#111517]"}`}>
@@ -33,7 +42,7 @@ const Detail = () => {
             darkMode ? "bg-[#2B3844] text-white hover:bg-[#364654]" : "bg-white text-[#111517] hover:bg-gray-50"
           }`}
         >
-          <img src={darkMode ? "/public/arrowBackWhite.svg" : "/public/arrowBackBlack.svg"} alt="arrow" className="w-4 h-4" />
+          <img src={darkMode ? "/arrowBackWhite.svg" : "/arrowBackBlack.svg"} alt="arrow" className="w-4 h-4" />
           Back
         </Link>
 
@@ -41,7 +50,7 @@ const Detail = () => {
           <div className="relative w-full max-w-[560px]">
             <img
               src={country.flags?.svg}
-              alt={`${country.name} flag`}
+              alt={`${country.name?.common} flag`}
               className="w-full rounded-lg shadow-lg object-cover transform transition-transform duration-700 ease-in-out hover:scale-105 hover:rotate-1"
             />
 
@@ -49,12 +58,12 @@ const Detail = () => {
           </div>
 
           <div className="w-full max-w-[600px] mb-[20px] animate-fadeIn">
-            <h1 className="text-2xl lg:text-3xl font-extrabold mb-8">{country.name}</h1>
+            <h1 className="text-2xl lg:text-3xl font-extrabold mb-8">{country.name?.common}</h1>
 
             <div className="flex flex-col lg:flex-row justify-between gap-10 mb-10">
               <div className="space-y-3">
                 <p>
-                  <span className="font-semibold">Native Name:</span> {country.nativeName}
+                  <span className="font-semibold">Official Name:</span> {country.name?.official}
                 </p>
                 <p>
                   <span className="font-semibold">Population:</span> {country.population.toLocaleString()}
@@ -66,19 +75,19 @@ const Detail = () => {
                   <span className="font-semibold">Sub Region:</span> {country.subregion}
                 </p>
                 <p>
-                  <span className="font-semibold">Capital:</span> {country.capital}
+                  <span className="font-semibold">Capital:</span> {country.capital ? country.capital[0] : "N/A"}
                 </p>
               </div>
 
               <div className="space-y-3">
                 <p>
-                  <span className="font-semibold">Top Level Domain:</span> {country.topLevelDomain.join(", ")}
+                  <span className="font-semibold">Top Level Domain:</span> {country.tld?.join(", ")}
                 </p>
                 <p>
-                  <span className="font-semibold">Currencies:</span> {country.currencies?.map((c) => c.name).join(", ")}
+                  <span className="font-semibold">Currencies:</span> {currencies}
                 </p>
                 <p>
-                  <span className="font-semibold">Languages:</span> {country.languages?.map((l) => l.name).join(", ")}
+                  <span className="font-semibold">Languages:</span> {languages}
                 </p>
               </div>
             </div>
