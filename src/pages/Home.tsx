@@ -33,7 +33,9 @@ const Home = () => {
 
   return (
     <div>
-      <main className={`px-7 py-12 lg:px-20 transition-colors duration-300 ${darkMode ? "bg-[#202C36]" : "bg-[#FAFAFA]"}`}>
+      <main
+        className={`px-7 py-12 lg:px-20 transition-colors duration-300 ${darkMode ? "bg-[#202C36]" : "bg-[#FAFAFA]"}`}
+      >
         <div className="slider flex justify-center mb-10">
           <Slider data={data} />
         </div>
@@ -44,7 +46,12 @@ const Home = () => {
         </div>
 
         <div className="flex justify-center">
-          <Pagination key={`${searchTerm}-${selectedRegion}`} items={filteredData} itemsPerPage={12} renderItem={(country) => <Card key={country.cca3} country={country} />} />
+          <Pagination
+            key={`${searchTerm}-${selectedRegion}`}
+            items={filteredData}
+            itemsPerPage={12}
+            renderItem={(country) => <Card key={country.cca3} country={country} />}
+          />
         </div>
       </main>
     </div>

@@ -1,0 +1,42 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" rx="32" fill="#F4F1EA"/>
+  <rect x="36" y="36" width="1208" height="648" rx="28" fill="#FCFBF8" stroke="#D6D0C4"/>
+  <rect x="72" y="72" width="1136" height="88" rx="20" fill="#FFFFFF" stroke="#E4DED2"/>
+  <text x="110" y="126" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Where in the world?</text>
+  <rect x="930" y="96" width="98" height="40" rx="12" fill="#F0EFEA"/>
+  <rect x="1046" y="96" width="126" height="40" rx="12" fill="#16202A"/>
+  <text x="1079" y="122" fill="#FCFBF8" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">Dark Mode</text>
+  <rect x="72" y="190" width="1136" height="184" rx="28" fill="url(#hero)"/>
+  <circle cx="1020" cy="282" r="110" fill="#FFFFFF" fill-opacity="0.14"/>
+  <circle cx="1098" cy="236" r="56" fill="#FFFFFF" fill-opacity="0.18"/>
+  <text x="110" y="254" fill="#FCFBF8" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">Interactive country explorer</text>
+  <text x="110" y="308" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="700">Discover countries, regions,</text>
+  <text x="110" y="360" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="700">and key facts in one place.</text>
+  <rect x="72" y="410" width="356" height="58" rx="16" fill="#FFFFFF" stroke="#E4DED2"/>
+  <text x="108" y="447" fill="#6A726E" font-family="Segoe UI, Arial, sans-serif" font-size="24">Search for a country...</text>
+  <rect x="446" y="410" width="236" height="58" rx="16" fill="#FFFFFF" stroke="#E4DED2"/>
+  <text x="487" y="447" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600">Filter by region</text>
+  <rect x="72" y="506" width="248" height="126" rx="22" fill="#FFFFFF" stroke="#E4DED2"/>
+  <rect x="340" y="506" width="248" height="126" rx="22" fill="#FFFFFF" stroke="#E4DED2"/>
+  <rect x="608" y="506" width="248" height="126" rx="22" fill="#FFFFFF" stroke="#E4DED2"/>
+  <rect x="876" y="506" width="248" height="126" rx="22" fill="#FFFFFF" stroke="#E4DED2"/>
+  <rect x="92" y="526" width="74" height="50" rx="12" fill="#C44E38"/>
+  <rect x="360" y="526" width="74" height="50" rx="12" fill="#1D6F5F"/>
+  <rect x="628" y="526" width="74" height="50" rx="12" fill="#D8A125"/>
+  <rect x="896" y="526" width="74" height="50" rx="12" fill="#294A6D"/>
+  <text x="184" y="550" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Georgia</text>
+  <text x="452" y="550" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Japan</text>
+  <text x="720" y="550" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Brazil</text>
+  <text x="988" y="550" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Canada</text>
+  <text x="184" y="588" fill="#6A726E" font-family="Segoe UI, Arial, sans-serif" font-size="18">Population: 3,700,000</text>
+  <text x="452" y="588" fill="#6A726E" font-family="Segoe UI, Arial, sans-serif" font-size="18">Population: 123,000,000</text>
+  <text x="720" y="588" fill="#6A726E" font-family="Segoe UI, Arial, sans-serif" font-size="18">Population: 203,000,000</text>
+  <text x="988" y="588" fill="#6A726E" font-family="Segoe UI, Arial, sans-serif" font-size="18">Population: 40,000,000</text>
+  <defs>
+    <linearGradient id="hero" x1="72" y1="190" x2="1208" y2="374" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#294A6D"/>
+      <stop offset="0.52" stop-color="#1D6F5F"/>
+      <stop offset="1" stop-color="#D8A125"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,8 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import type { Country } from "../types/types";
 import { useAppContext } from "../context/AppContext";
+import { getCountryByCode } from "../api";
 
 const Detail = () => {
   const { id } = useParams<{ id: string }>();
@@ -13,8 +13,8 @@ const Detail = () => {
     const fetchCountry = async () => {
       try {
         if (!id) return;
-        const response = await axios.get<Country[]>(`https://restcountries.com/v3.1/alpha/${id}`);
-        setCountry(response.data[0]);
+        const result = await getCountryByCode(id);
+        setCountry(result);
       } catch (error) {
         console.error("Failed to fetch country:", error);
       }
@@ -23,7 +23,12 @@ const Detail = () => {
     fetchCountry();
   }, [id]);
 
-  if (!country) return <p className={`text-center mt-20 text-lg ${darkMode ? "text-white" : "text-[#111517]"}`}>Loading...</p>;
+  if (!country)
+    return (
+      <p className={`text-center mt-20 text-lg ${darkMode ? "text-white" : "text-[#111517]"}`}>
+        Loading...
+      </p>
+    );
 
   const currencies = country.currencies
     ? Object.values(country.currencies)
@@ -34,15 +39,23 @@ const Detail = () => {
   const languages = country.languages ? Object.values(country.languages).join(", ") : "N/A";
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${darkMode ? "bg-[#202C36] text-white" : "bg-[#FFFFFF] text-[#111517]"}`}>
+    <div
+      className={`min-h-screen transition-colors duration-500 ${darkMode ? "bg-[#202C36] text-white" : "bg-[#FFFFFF] text-[#111517]"}`}
+    >
       <div className="px-7 lg:px-20 py-10">
         <Link
           to="/"
           className={`flex items-center gap-3 px-6 py-2 rounded shadow-md w-fit mb-14 transition-all duration-300 hover:scale-105 hover:shadow-lg ${
-            darkMode ? "bg-[#2B3844] text-white hover:bg-[#364654]" : "bg-white text-[#111517] hover:bg-gray-50"
+            darkMode
+              ? "bg-[#2B3844] text-white hover:bg-[#364654]"
+              : "bg-white text-[#111517] hover:bg-gray-50"
           }`}
         >
-          <img src={darkMode ? "/arrowBackWhite.svg" : "/arrowBackBlack.svg"} alt="arrow" className="w-4 h-4" />
+          <img
+            src={darkMode ? "/arrowBackWhite.svg" : "/arrowBackBlack.svg"}
+            alt="arrow"
+            className="w-4 h-4"
+          />
           Back
         </Link>
 
@@ -66,7 +79,8 @@ const Detail = () => {
                   <span className="font-semibold">Official Name:</span> {country.name?.official}
                 </p>
                 <p>
-                  <span className="font-semibold">Population:</span> {country.population.toLocaleString()}
+                  <span className="font-semibold">Population:</span>{" "}
+                  {country.population.toLocaleString()}
                 </p>
                 <p>
                   <span className="font-semibold">Region:</span> {country.region}
@@ -75,7 +89,8 @@ const Detail = () => {
                   <span className="font-semibold">Sub Region:</span> {country.subregion}
                 </p>
                 <p>
-                  <span className="font-semibold">Capital:</span> {country.capital ? country.capital[0] : "N/A"}
+                  <span className="font-semibold">Capital:</span>{" "}
+                  {country.capital ? country.capital[0] : "N/A"}
                 </p>
               </div>
 
@@ -99,7 +114,9 @@ const Detail = () => {
                   <span
                     key={borderCode}
                     className={`px-6 py-1 rounded shadow text-sm transition-all duration-300 hover:scale-105 hover:shadow-md ${
-                      darkMode ? "bg-[#2B3844] text-white hover:bg-[#364654]" : "bg-white text-[#111517] hover:bg-gray-100"
+                      darkMode
+                        ? "bg-[#2B3844] text-white hover:bg-[#364654]"
+                        : "bg-white text-[#111517] hover:bg-gray-100"
                     }`}
                   >
                     {borderCode}
